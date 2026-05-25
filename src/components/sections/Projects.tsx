@@ -1,5 +1,43 @@
 import { MotionSection } from "../ui/MotionSection";
+import { StackTag } from "../ui/StackTag";
 import { PROJECTS } from "../../data/content";
+
+function isExternalHref(href: string) {
+	return href.startsWith("http");
+}
+
+type ProjectCta = {
+	label: string;
+	icon: string;
+	href: string;
+};
+
+function ProjectCtaLink({
+	cta,
+	variant,
+}: {
+	cta: ProjectCta;
+	variant: "primary" | "secondary";
+}) {
+	return (
+		<a
+			href={cta.href}
+			{...(isExternalHref(cta.href)
+				? { target: "_blank", rel: "noopener noreferrer" }
+				: {})}
+			className={
+				variant === "primary"
+					? "inline-flex items-center gap-2 font-bold text-primary transition-colors duration-300 ease-smooth hover:underline"
+					: "inline-flex items-center gap-2 font-bold text-on-surface-variant transition-colors duration-300 ease-smooth hover:text-primary dark:hover:text-on-surface"
+			}
+		>
+			{cta.label}
+			<span className="material-symbols-outlined text-sm" aria-hidden>
+				{cta.icon}
+			</span>
+		</a>
+	);
+}
 
 export function Projects() {
 	return (
@@ -33,7 +71,6 @@ export function Projects() {
 										loading="lazy"
 										decoding="async"
 									/>
-									<div className="absolute inset-0 bg-linear-to-t from-on-background/10 to-transparent opacity-30 dark:from-surface dark:opacity-60" />
 								</div>
 								<div className="space-y-4">
 									<div className="flex flex-wrap gap-2">
@@ -50,41 +87,33 @@ export function Projects() {
 									<p className="text-lg leading-relaxed text-on-surface-variant">
 										{p.description}
 									</p>
-									<div className="flex flex-wrap gap-2 pt-2">
+									<div className="flex flex-wrap gap-x-4 gap-y-2 pt-2">
 										{p.tags.map((t) => (
-											<span
+											<StackTag
 												key={t}
-												className="rounded-md border border-outline-variant bg-white px-3 py-1 text-xs font-medium text-on-surface-variant dark:border-outline-variant/10 dark:bg-surface-container-highest"
-											>
-												{t}
-											</span>
+												label={t}
+												className="text-xs font-medium"
+											/>
 										))}
 									</div>
-									<div className="flex flex-wrap gap-4 pt-2">
-										<a
-											href={p.primaryCta.href}
-											className="inline-flex items-center gap-2 font-bold text-primary transition-colors duration-300 ease-smooth hover:underline"
-										>
-											{p.primaryCta.label}
-											<span
-												className="material-symbols-outlined text-sm"
-												aria-hidden
-											>
-												{p.primaryCta.icon}
-											</span>
-										</a>
-										<a
-											href={p.secondaryCta.href}
-											className="inline-flex items-center gap-2 font-bold text-on-surface-variant transition-colors duration-300 ease-smooth hover:text-primary dark:hover:text-on-surface"
-										>
-											{p.secondaryCta.label}
-											<span
-												className="material-symbols-outlined text-sm"
-												aria-hidden
-											>
-												{p.secondaryCta.icon}
-											</span>
-										</a>
+									<div className="flex flex-col gap-3 pt-2">
+										<ProjectCtaLink
+											cta={p.primaryCta}
+											variant="primary"
+										/>
+										<div className="flex flex-wrap gap-4">
+											<ProjectCtaLink
+												cta={p.secondaryCta}
+												variant="secondary"
+											/>
+											{"tertiaryCta" in p &&
+											p.tertiaryCta ? (
+												<ProjectCtaLink
+													cta={p.tertiaryCta}
+													variant="secondary"
+												/>
+											) : null}
+										</div>
 									</div>
 								</div>
 							</article>

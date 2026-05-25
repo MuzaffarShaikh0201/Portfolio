@@ -1,11 +1,14 @@
-/** Remote assets from Stitch export (same URLs as generated HTML). */
+import { FaServer } from "react-icons/fa6";
+import { MdDesignServices, MdOutlineWeb } from "react-icons/md";
+import type { IconType } from "react-icons";
+
 export const IMAGES = {
 	heroWorkspace:
-		"https://lh3.googleusercontent.com/aida-public/AB6AXuD_erhrzg3AxpKfsQxAmjYLseZ3N_JuNRD71DR9YrkBXfw1YHrqRg8fahuaHkB5lt_eRYN8qarWYWaPX6-c6QRaHnbbStwvT3XVWBWCJFl5T6BHE6xcl8uZ4Zx1S7dfgcFsQhv_tGhJhWhu4e8IW9dLlB-IOAfDiqZYX-9-PMjNBEFMP4tJdVWMGsunbYxc58SaEsZRejpulOEXKYXAxn2HmwpNEjkiNlAeQsfGRuCoA14KShI6ci55ZOuz9vYQn4whRpi1dmVaxt4",
+		"https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/hero.png",
 	portrait:
-		"https://lh3.googleusercontent.com/aida-public/AB6AXuANDEll7CDEe64CAcZIbx6fLQNqfskGZ6LSH-rl5tW9JU5EqkpQu4eacYCpxedjoxkejykXvjI0jcpkN4tXdSy4OhcMhE5Jk6JoTTmlUo0cAGpbf3_ilqWk27hcZRRu8OSmLQI0Rr7E-wlXSgramOEGg985GkLE91aVe161cmDIS0Oi1HTNJVHkKNafJqZU5_0fH2ykdHxBN0sFRrjHGQgxUevUAkM6cL5xsRFtvY8pe6okHBHcXcwwyL54cwoDiwm772fJkyvNAUE",
-	projectEcoSync:
-		"https://lh3.googleusercontent.com/aida-public/AB6AXuD0l0QaHIIKEY8QhBV_8R6UoPG9ZEUxs9EPieStiGb6nENFjX3sDD9reuJFOtBkmJQoFdOdzQ9IX5B3OHWR3AZSyKz21divOEcmAUdF0Piyc5AjFz_1w_g-MoFQNnwn1Rh7FwJMq7_HQyrwoDyiP7H7cSDGWna_GRqpnRC7Y5h5rDg08sK9nddYpecXIcUTN8bJ6FYxPhL5jGmTviWo0zvXAFuHPQkpAiN-c9yUq8BllNX914sIGcptPzhWBT4OyvGPW3__WsX2AuA",
+		"https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/portrait.png",
+	trellix:
+		"https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/projects/trellix.png",
 	projectNexus:
 		"https://lh3.googleusercontent.com/aida-public/AB6AXuAdSLiwxj8r0cBMKqIM_J6DQjJxTK5GLnnyYl0J5NIDKIkdpVtmgroWpjw8VA8DFSJok0v5_DxhekTrKF9NRS1nvQ_MQlJ6fpFXLoBAF8RAwi-Ijr4pcMJ3f4Ulc7CwBa7iPNkOOVznF7GYnpWI-JmQtGjbf1KjihVmKjuoPU-JZGhL5L68exGVQbYVti5nrUEnMG2uYrTkPU4azZltBeX1FQ3o0gidGlQDlGcnbs45gjW6n7JkGCCx9Eh_m71h-t2mFs-nSmuM6jc",
 } as const;
@@ -27,51 +30,89 @@ export const NAV_LINKS = [
 	{ id: "contact", label: "Contact" },
 ] as const;
 
+export const stack_icons = {
+	React: "https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/react.svg",
+	NodeJS: "https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/nodejs.svg",
+	TypeScript:
+		"https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/typescript.svg",
+	TailwindCSS:
+		"https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/tailwindcss.svg",
+	Python: "https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/python.svg",
+	FastAPI:
+		"https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/fastapi.svg",
+	PostgreSQL:
+		"https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/postgresql.svg",
+	Redis: "https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/redis.svg",
+	Docker: "https://ejguwcpjzfqdhaoisuaf.supabase.co/storage/v1/object/public/default/portfolio/stack_icons/docker.svg",
+} as const;
+
 export const EXPERTISE = [
 	"React",
 	"Node.js",
-	"Python",
 	"TypeScript",
-	"Next.js",
+	"TailwindCSS",
+	"Python",
+	"FastAPI",
 	"PostgreSQL",
+	"Redis",
+	"Docker",
 ] as const;
 
-export const SERVICES = [
+export const SERVICES: {
+	Icon: IconType;
+	title: string;
+	body: string;
+}[] = [
 	{
-		icon: "web" as const,
+		Icon: MdOutlineWeb,
 		title: "Web Dev",
 		body: "Crafting responsive, high-performance front-end experiences using modern frameworks and best practices.",
 	},
 	{
-		icon: "dns" as const,
+		Icon: FaServer,
 		title: "Backend Architecture",
 		body: "Designing scalable server-side systems and APIs that serve as the resilient backbone of your application.",
 	},
 	{
-		icon: "design_services" as const,
+		Icon: MdDesignServices,
 		title: "UI/UX Design",
 		body: "Creating intuitive user interfaces and seamless user journeys that prioritize accessibility and engagement.",
 	},
-] as const;
+];
 
 export const PROJECTS = [
 	{
 		kind: "Full Stack",
-		year: "2023",
-		title: "EcoSync Platform",
+		year: "2026",
+		title: "Trellix",
 		description:
-			"A real-time data monitoring system for environmental conservation efforts. Managed complex data streams from IoT sensors.",
-		tags: ["React", "Express", "Redis"],
-		image: IMAGES.projectEcoSync,
+			"A project manager built for software developers—organize dev work, link repos, and track delivery from planning to ship.",
+		tags: [
+			"React",
+			"Node.js",
+			"Tailwind CSS",
+			"TypeScript",
+			"Python",
+			"FastAPI",
+			"PostgreSQL",
+			"Redis",
+			"Docker",
+		],
+		image: IMAGES.trellix,
 		primaryCta: {
 			label: "Live Demo",
 			icon: "open_in_new" as const,
-			href: "#",
+			href: "https://trellix.vercel.app",
 		},
 		secondaryCta: {
-			label: "Source Code",
+			label: "Source Code - Frontend",
 			icon: "code" as const,
-			href: "#",
+			href: "https://github.com/MuzaffarShaikh0201/Trellix",
+		},
+		tertiaryCta: {
+			label: "Source Code - Backend",
+			icon: "code" as const,
+			href: "https://github.com/MuzaffarShaikh0201/trellix-backend",
 		},
 	},
 	{

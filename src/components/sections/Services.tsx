@@ -16,16 +16,14 @@ export function Services() {
 				</MotionSection>
 
 				<div className="grid gap-8 md:grid-cols-3">
-					{SERVICES.map((s) => (
-						<MotionSection key={s.title}>
+					{SERVICES.map(({ Icon, title, body }) => (
+						<MotionSection key={title}>
 							<div className="group rounded-2xl border border-outline-variant/30 bg-surface-container-high p-6 transition-all duration-300 ease-smooth hover:-translate-y-2 hover:bg-white hover:shadow-2xl hover:shadow-primary/5 dark:border-transparent dark:bg-surface-container-high dark:hover:-translate-y-2 dark:hover:bg-surface-bright dark:hover:shadow-none">
 								<div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary-container text-primary transition-colors duration-300 ease-smooth group-hover:bg-primary group-hover:text-on-primary dark:bg-primary/10 dark:group-hover:bg-primary">
-									<span className="material-symbols-outlined text-3xl" aria-hidden>
-										{s.icon}
-									</span>
+									<Icon className="text-3xl" aria-hidden />
 								</div>
-								<h3 className="mb-4 font-headline text-2xl font-bold text-on-surface">{s.title}</h3>
-								<p className="leading-relaxed text-on-surface-variant">{s.body}</p>
+								<h3 className="mb-4 font-headline text-2xl font-bold text-on-surface">{title}</h3>
+								<p className="leading-relaxed text-on-surface-variant">{body}</p>
 							</div>
 						</MotionSection>
 					))}

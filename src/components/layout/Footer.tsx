@@ -1,11 +1,25 @@
+import { FaGithub, FaLinkedin, FaSquareXTwitter } from "react-icons/fa6";
+import type { IconType } from "react-icons";
 import { SITE } from "../../data/content";
 import { cn } from "../../lib/cn";
 
-const SOCIAL = [
-	{ label: "LinkedIn", href: "#" },
-	{ label: "GitHub", href: "#" },
-	{ label: "Twitter", href: "#" },
-] as const;
+const SOCIAL: {
+	label: string;
+	href: string;
+	Icon: IconType;
+}[] = [
+	{
+		label: "LinkedIn",
+		href: "https://www.linkedin.com/in/muzaffar-ali-shaikh-3b1a17274",
+		Icon: FaLinkedin,
+	},
+	{
+		label: "GitHub",
+		href: "https://github.com/MuzaffarShaikh0201",
+		Icon: FaGithub,
+	},
+	{ label: "X (Twitter)", href: "#", Icon: FaSquareXTwitter },
+];
 
 export function Footer() {
 	return (
@@ -22,13 +36,16 @@ export function Footer() {
 					Engineered.
 				</p>
 				<div className="flex flex-wrap justify-center gap-6 md:gap-8">
-					{SOCIAL.map(({ label, href }) => (
+					{SOCIAL.map(({ label, href, Icon }) => (
 						<a
 							key={label}
 							href={href}
-							className="font-body text-xs uppercase tracking-widest transition-colors duration-300 ease-smooth text-(--ds-footer-text) hover:text-(--ds-footer-link-hover)"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={label}
+							className="text-(--ds-footer-text) transition-colors duration-300 ease-smooth hover:text-(--ds-footer-link-hover)"
 						>
-							{label}
+							<Icon className="size-5" aria-hidden />
 						</a>
 					))}
 				</div>

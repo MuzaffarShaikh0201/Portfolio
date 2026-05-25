@@ -1,4 +1,5 @@
 import { MotionSection } from "../ui/MotionSection";
+import { StackTag } from "../ui/StackTag";
 import { EXPERTISE, IMAGES } from "../../data/content";
 
 export function About() {
@@ -56,14 +57,13 @@ export function About() {
 								<h3 className="mb-6 text-sm font-bold uppercase tracking-widest text-primary">
 									Expertise Stack
 								</h3>
-								<div className="flex flex-wrap gap-3">
+								<div className="flex flex-wrap gap-x-5 gap-y-3">
 									{EXPERTISE.map((skill) => (
-										<span
+										<StackTag
 											key={skill}
-											className="rounded-full bg-secondary-container px-5 py-2 text-sm font-semibold tracking-tight text-on-secondary-container"
-										>
-											{skill}
-										</span>
+											label={skill}
+											className="text-sm tracking-tight"
+										/>
 									))}
 								</div>
 							</div>

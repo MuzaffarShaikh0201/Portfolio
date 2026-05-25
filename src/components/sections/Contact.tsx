@@ -1,13 +1,8 @@
-import { useState, type SubmitEvent } from "react";
 import { MotionSection } from "../ui/MotionSection";
+import { useForm, ValidationError } from "@formspree/react";
 
 export function Contact() {
-	const [submitted, setSubmitted] = useState(false);
-
-	function onSubmit(e: SubmitEvent<HTMLFormElement>) {
-		e.preventDefault();
-		setSubmitted(true);
-	}
+	const [state, handleSubmit] = useForm("xykvngjq");
 
 	return (
 		<section
@@ -26,7 +21,7 @@ export function Contact() {
 
 				<MotionSection>
 					<div className="rounded-3xl border border-outline-variant/30 bg-surface-container-low p-6 dark:border-transparent dark:bg-surface-container-low md:p-10 lg:p-12">
-						<form className="grid gap-6" onSubmit={onSubmit}>
+						<form className="grid gap-6" onSubmit={handleSubmit}>
 							<div className="grid gap-6 md:grid-cols-2">
 								<div className="space-y-2">
 									<label
@@ -39,9 +34,14 @@ export function Contact() {
 										id="name"
 										name="name"
 										type="text"
-										placeholder="Alex Rivers"
+										placeholder="John Doe"
 										autoComplete="name"
+										required
 										className="w-full rounded-xl border border-outline-variant bg-surface px-4 py-4 text-on-surface placeholder:text-outline/60 transition-shadow duration-300 ease-smooth focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-none dark:bg-surface-container-lowest dark:placeholder:text-outline/40 dark:focus:ring-primary/20"
+									/>
+									<ValidationError
+										field="name"
+										errors={state.errors}
 									/>
 								</div>
 								<div className="space-y-2">
@@ -55,9 +55,14 @@ export function Contact() {
 										id="email"
 										name="email"
 										type="email"
-										placeholder="alex@arboretum.dev"
+										placeholder="john@doe.com"
 										autoComplete="email"
+										required
 										className="w-full rounded-xl border border-outline-variant bg-surface px-4 py-4 text-on-surface placeholder:text-outline/60 transition-shadow duration-300 ease-smooth focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-none dark:bg-surface-container-lowest dark:placeholder:text-outline/40 dark:focus:ring-primary/20"
+									/>
+									<ValidationError
+										field="email"
+										errors={state.errors}
 									/>
 								</div>
 							</div>
@@ -73,14 +78,20 @@ export function Contact() {
 									name="message"
 									rows={5}
 									placeholder="How can we grow together?"
+									required
 									className="w-full rounded-xl border border-outline-variant bg-surface px-4 py-4 text-on-surface placeholder:text-outline/60 transition-shadow duration-300 ease-smooth focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-none dark:bg-surface-container-lowest dark:placeholder:text-outline/40 dark:focus:ring-primary/20"
+								/>
+								<ValidationError
+									field="message"
+									errors={state.errors}
 								/>
 							</div>
 							<button
 								type="submit"
+								disabled={state.submitting || state.succeeded}
 								className="mt-2 w-full rounded-xl bg-primary py-5 text-sm font-bold uppercase tracking-widest text-on-primary shadow-xl shadow-primary/10 transition-all duration-300 ease-smooth hover:opacity-90 dark:bg-linear-to-br dark:from-primary dark:to-primary-container dark:shadow-primary/10"
 							>
-								{submitted
+								{state.succeeded
 									? "Thanks — we’ll be in touch"
 									: "Send Connection Request"}
 							</button>
