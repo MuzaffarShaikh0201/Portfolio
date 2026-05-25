@@ -12,11 +12,11 @@ export function About() {
 					<div className="lg:col-span-5">
 						<MotionSection>
 							<div className="group relative">
-								<div className="absolute -inset-4 rounded-2xl bg-primary/5 blur-2xl transition-all duration-300 ease-smooth group-hover:bg-primary/10 dark:bg-primary/10 dark:group-hover:bg-primary/20" />
+								<div className="absolute -inset-4 rounded-2xl bg-primary/5 blur-2xl transition-all duration-300 ease-smooth lg:group-hover:bg-primary/10 dark:bg-primary/10 dark:lg:group-hover:bg-primary/20" />
 								<img
 									src={IMAGES.portrait}
 									alt="Portrait"
-									className="relative aspect-4/5 w-full rounded-2xl object-cover shadow-xl grayscale transition-all duration-700 ease-smooth hover:grayscale-0 dark:shadow-none"
+									className="relative aspect-4/5 w-full rounded-2xl object-cover shadow-xl max-lg:grayscale-0 lg:grayscale lg:transition-all lg:duration-700 lg:ease-smooth lg:hover:grayscale-0 dark:shadow-none"
 									width={480}
 									height={600}
 									decoding="async"

@@ -7,7 +7,7 @@ export function Hero() {
 
 	return (
 		<section
-			className="relative flex min-h-screen scroll-mt-28 items-center justify-center overflow-hidden pt-24 sm:pt-28"
+			className="relative flex min-h-screen scroll-mt-28 items-start justify-center overflow-hidden pt-24 sm:pt-28 lg:items-center"
 			id="home"
 		>
 			<div
@@ -18,7 +18,7 @@ export function Hero() {
 			</div>
 
 			<div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 sm:gap-12 lg:grid-cols-2 lg:px-8">
-				<MotionSection className="space-y-6 sm:space-y-8">
+				<MotionSection className="order-2 space-y-6 sm:space-y-8 lg:order-1">
 					<div className="inline-flex items-center rounded-full bg-primary-container px-4 py-2 text-sm font-semibold uppercase tracking-wide text-on-primary-container dark:bg-surface-container-high dark:text-primary">
 						{SITE.tagline}
 					</div>
@@ -47,11 +47,11 @@ export function Hero() {
 					</div>
 				</MotionSection>
 
-				<MotionSection className="relative hidden lg:block">
-					<div className="aspect-square rotate-3 overflow-hidden rounded-3xl shadow-2xl shadow-primary/10 transition-transform duration-500 ease-smooth hover:rotate-0 dark:shadow-emerald-950/50">
+				<MotionSection className="relative order-1 w-full max-w-sm justify-self-center lg:order-2 lg:max-w-none">
+					<div className="aspect-square overflow-hidden rounded-3xl shadow-2xl shadow-primary/10 lg:transition-transform lg:duration-500 lg:ease-smooth lg:rotate-3 lg:hover:rotate-0 dark:shadow-emerald-950/50">
 						<img
 							src={IMAGES.heroWorkspace}
-							alt=""
+							alt="Developer workspace"
 							className="h-full w-full object-cover"
 							width={800}
 							height={800}
