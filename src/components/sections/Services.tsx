@@ -5,7 +5,7 @@ import { SERVICES } from "../../data/content";
 export function Services() {
 	return (
 		<section
-			className="relative scroll-mt-28 bg-background py-20 sm:py-28 lg:py-32"
+			className="relative bg-background pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32"
 			id="services"
 		>
 			<DecorAsterisk

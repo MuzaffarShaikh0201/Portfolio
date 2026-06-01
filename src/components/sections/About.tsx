@@ -1,13 +1,13 @@
 import { MotionSection } from "../ui/MotionSection";
 import { DecorAsterisk } from "../ui/DecorAsterisk";
-import { PortraitPlaceholder } from "../ui/PortraitPlaceholder";
+import { TerminalPortraitPlaceholder } from "../ui/TerminalPortraitPlaceholder";
 import { StackTag } from "../ui/StackTag";
 import { EXPERTISE } from "../../data/content";
 
 export function About() {
 	return (
 		<section
-			className="relative scroll-mt-28 bg-surface-container-low py-20 sm:py-28 lg:py-32"
+			className="relative bg-surface-container-low pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32"
 			id="about"
 		>
 			<DecorAsterisk
@@ -19,7 +19,7 @@ export function About() {
 				<div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
 					<div className="lg:col-span-5">
 						<MotionSection>
-							<PortraitPlaceholder label="Add your portrait" />
+							<TerminalPortraitPlaceholder />
 						</MotionSection>
 					</div>
 					<div className="space-y-8 lg:col-span-7">

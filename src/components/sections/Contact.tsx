@@ -6,7 +6,7 @@ export function Contact() {
 
 	return (
 		<section
-			className="scroll-mt-28 bg-background py-20 sm:py-28 lg:py-32"
+			className="bg-background pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32"
 			id="contact"
 		>
 			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">

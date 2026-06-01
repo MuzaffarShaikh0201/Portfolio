@@ -19,7 +19,7 @@ export function Header() {
 				)}
 				aria-label="Primary"
 			>
-				<div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+				<div className="mx-auto flex h-(--ds-header-height) max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 					<a
 						href="#home"
 						className="font-headline text-xl font-black tracking-tighter transition-opacity duration-300 ease-smooth text-(--ds-nav-logo) hover:opacity-90"
