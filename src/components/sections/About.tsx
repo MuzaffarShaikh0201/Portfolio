@@ -1,40 +1,38 @@
 import { MotionSection } from "../ui/MotionSection";
+import { DecorAsterisk } from "../ui/DecorAsterisk";
+import { TerminalPortraitPlaceholder } from "../ui/TerminalPortraitPlaceholder";
 import { StackTag } from "../ui/StackTag";
-import { EXPERTISE, IMAGES } from "../../data/content";
+import { EXPERTISE } from "../../data/content";
 
 export function About() {
 	return (
 		<section
-			className="scroll-mt-28 bg-surface-container-low py-20 sm:py-28 lg:py-32"
+			className="relative bg-surface-container-low pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32"
 			id="about"
 		>
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<DecorAsterisk
+				size="lg"
+				className="absolute right-4 top-20 hidden md:block lg:right-12"
+			/>
+
+			<div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
 					<div className="lg:col-span-5">
 						<MotionSection>
-							<div className="group relative">
-								<div className="absolute -inset-4 rounded-2xl bg-primary/5 blur-2xl transition-all duration-300 ease-smooth lg:group-hover:bg-primary/10 dark:bg-primary/10 dark:lg:group-hover:bg-primary/20" />
-								<img
-									src={IMAGES.portrait}
-									alt="Portrait"
-									className="relative aspect-4/5 w-full rounded-2xl object-cover shadow-xl max-lg:grayscale-0 lg:grayscale lg:transition-all lg:duration-700 lg:ease-smooth lg:hover:grayscale-0 dark:shadow-none"
-									width={480}
-									height={600}
-									decoding="async"
-								/>
-							</div>
+							<TerminalPortraitPlaceholder />
 						</MotionSection>
 					</div>
 					<div className="space-y-8 lg:col-span-7">
 						<MotionSection>
+							<p className="section-eyebrow mb-4">About Me</p>
 							<h2 className="font-headline text-4xl font-bold tracking-tight text-on-background sm:text-5xl">
 								The{" "}
-								<span className="font-light italic text-primary">
+								<span className="text-accent-italic text-primary">
 									Architect
 								</span>{" "}
 								Behind the Code
 							</h2>
-							<div className="space-y-6 text-lg leading-relaxed text-on-surface-variant">
+							<div className="mt-6 space-y-6 text-lg leading-relaxed text-on-surface-variant">
 								<p>
 									I believe code is more than logic; it&apos;s
 									a medium for creation. Based in the heart of
@@ -54,7 +52,7 @@ export function About() {
 								</p>
 							</div>
 							<div className="pt-6 sm:pt-8">
-								<h3 className="mb-6 text-sm font-bold uppercase tracking-widest text-primary">
+								<h3 className="section-eyebrow mb-6">
 									Expertise Stack
 								</h3>
 								<div className="flex flex-wrap gap-x-5 gap-y-3">

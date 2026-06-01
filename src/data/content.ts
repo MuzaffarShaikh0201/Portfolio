@@ -117,21 +117,21 @@ export const PROJECTS = [
 	},
 	{
 		kind: "Backend",
-		year: "2024",
-		title: "Nexus Core API",
+		year: "2025",
+		title: "PulseStream",
 		description:
-			"A distributed microservices engine for ultra-fast asset processing. Handled 10k+ requests per second with minimal latency.",
-		tags: ["Go", "gRPC", "Docker"],
+			"High-performance, event-driven backend platform for ingesting, processing, and analyzing large-scale event data in real-time.",
+		tags: ["Python", "FastAPI", "PostgreSQL", "Redis", "Docker"],
 		image: IMAGES.projectNexus,
 		primaryCta: {
 			label: "Documentation",
 			icon: "menu_book" as const,
-			href: "#",
+			href: "https://github.com/MuzaffarShaikh0201/PulseStream/blob/main/README.md",
 		},
 		secondaryCta: {
 			label: "Source Code",
 			icon: "code" as const,
-			href: "#",
+			href: "https://github.com/MuzaffarShaikh0201/PulseStream",
 		},
 	},
 ] as const;

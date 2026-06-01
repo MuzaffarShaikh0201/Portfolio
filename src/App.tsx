@@ -14,7 +14,7 @@ export default function App() {
 	}, []);
 
 	return (
-		<div className="min-h-dvh bg-background">
+		<div className="relative min-h-dvh overflow-x-hidden bg-background">
 			<Header />
 			<main>
 				<Hero />

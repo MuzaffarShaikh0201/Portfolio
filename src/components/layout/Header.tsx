@@ -16,11 +16,10 @@ export function Header() {
 				className={cn(
 					"border-b backdrop-blur-xl transition-smooth",
 					"[background:var(--ds-nav-bg)] border-(--ds-nav-border)",
-					"shadow-[0_8px_40px_rgba(2,24,4,0.12)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]",
 				)}
 				aria-label="Primary"
 			>
-				<div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+				<div className="mx-auto flex h-(--ds-header-height) max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 					<a
 						href="#home"
 						className="font-headline text-xl font-black tracking-tighter transition-opacity duration-300 ease-smooth text-(--ds-nav-logo) hover:opacity-90"
@@ -53,7 +52,7 @@ export function Header() {
 						<ThemeToggle />
 						<button
 							type="button"
-							className="rounded-lg p-2 text-on-background transition-smooth hover:opacity-85 md:hidden dark:text-(--ds-nav-link-idle)"
+							className="rounded-lg p-2 text-(--ds-nav-link-idle) transition-smooth hover:text-(--ds-nav-link-hover) md:hidden"
 							onClick={() => setMobileOpen((o) => !o)}
 							aria-expanded={mobileOpen}
 							aria-controls="mobile-nav"
