@@ -1,4 +1,5 @@
 import { MotionSection } from "../ui/MotionSection";
+import { DecorAsterisk } from "../ui/DecorAsterisk";
 import { StackTag } from "../ui/StackTag";
 import { PROJECTS } from "../../data/content";
 
@@ -28,7 +29,7 @@ function ProjectCtaLink({
 			className={
 				variant === "primary"
 					? "inline-flex items-center gap-2 font-bold text-primary transition-colors duration-300 ease-smooth hover:underline"
-					: "inline-flex items-center gap-2 font-bold text-on-surface-variant transition-colors duration-300 ease-smooth hover:text-primary dark:hover:text-on-surface"
+					: "inline-flex items-center gap-2 font-bold text-on-surface-variant transition-colors duration-300 ease-smooth hover:text-primary"
 			}
 		>
 			{cta.label}
@@ -42,26 +43,31 @@ function ProjectCtaLink({
 export function Projects() {
 	return (
 		<section
-			className="scroll-mt-28 bg-surface-container py-20 sm:py-28 lg:py-32"
+			className="relative scroll-mt-28 bg-surface-container py-20 sm:py-28 lg:py-32"
 			id="projects"
 		>
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<MotionSection className="mb-12 flex flex-col justify-end gap-4 sm:mb-16 lg:mb-20">
-					<div>
-						<h2 className="mb-4 font-headline text-4xl font-bold tracking-tighter text-on-background sm:text-5xl">
-							Selected Works
-						</h2>
-						<p className="text-lg text-on-surface-variant">
-							A gallery of meticulously engineered solutions.
-						</p>
-					</div>
+			<DecorAsterisk
+				size="lg"
+				className="absolute bottom-32 left-8 hidden lg:block"
+			/>
+
+			<div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<MotionSection className="mb-12 text-center sm:mb-16 lg:mb-20">
+					<p className="section-eyebrow mb-4">Portfolio</p>
+					<h2 className="mb-4 font-headline text-4xl font-bold tracking-tight text-on-background sm:text-5xl">
+						Selected{" "}
+						<span className="text-accent-italic text-primary">Works</span>
+					</h2>
+					<p className="mx-auto max-w-2xl text-lg text-on-surface-variant">
+						A gallery of meticulously engineered solutions.
+					</p>
 				</MotionSection>
 
 				<div className="grid gap-10 md:grid-cols-2 md:gap-12">
 					{PROJECTS.map((p) => (
 						<MotionSection key={p.title}>
 							<article className="group">
-								<div className="relative mb-6 aspect-16/10 overflow-hidden rounded-3xl shadow-xl shadow-primary/5 dark:shadow-2xl dark:shadow-surface/40">
+								<div className="relative mb-6 aspect-16/10 overflow-hidden rounded-2xl border border-[color:var(--ds-card-border)]">
 									<img
 										src={p.image}
 										alt=""

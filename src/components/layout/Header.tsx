@@ -16,7 +16,6 @@ export function Header() {
 				className={cn(
 					"border-b backdrop-blur-xl transition-smooth",
 					"[background:var(--ds-nav-bg)] border-(--ds-nav-border)",
-					"shadow-[0_8px_40px_rgba(2,24,4,0.12)] dark:shadow-[0_8px_40px_rgba(0,0,0,0.35)]",
 				)}
 				aria-label="Primary"
 			>
@@ -53,7 +52,7 @@ export function Header() {
 						<ThemeToggle />
 						<button
 							type="button"
-							className="rounded-lg p-2 text-on-background transition-smooth hover:opacity-85 md:hidden dark:text-(--ds-nav-link-idle)"
+							className="rounded-lg p-2 text-(--ds-nav-link-idle) transition-smooth hover:text-(--ds-nav-link-hover) md:hidden"
 							onClick={() => setMobileOpen((o) => !o)}
 							aria-expanded={mobileOpen}
 							aria-controls="mobile-nav"

@@ -26,8 +26,7 @@ export function Footer() {
 		<footer
 			className={cn(
 				"w-full border-t px-4 py-10 sm:px-6 lg:px-8",
-				"transition-smooth [background:var(--ds-footer-bg)] border-[color-mix(in_oklab,var(--ds-outline-variant)_30%,transparent)]",
-				"dark:border-emerald-900/30",
+				"transition-smooth [background:var(--ds-footer-bg)] border-(--ds-nav-border)",
 			)}
 		>
 			<div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 md:flex-row">

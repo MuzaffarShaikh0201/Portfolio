@@ -12,7 +12,7 @@ export function ThemeToggle({ className }: { className?: string }) {
 			className={cn(
 				"rounded-lg p-2 transition-transform duration-300 ease-smooth",
 				"scale-95 active:scale-90",
-				"text-primary dark:text-(--ds-nav-link-active)",
+				"text-(--ds-nav-link-idle) hover:text-(--ds-nav-link-hover)",
 				"hover:opacity-90 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-primary",
 				className,
 			)}

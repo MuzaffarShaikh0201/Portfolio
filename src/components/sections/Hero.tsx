@@ -1,5 +1,7 @@
 import { MotionSection } from "../ui/MotionSection";
-import { IMAGES, SITE } from "../../data/content";
+import { DecorAsterisk } from "../ui/DecorAsterisk";
+import { PortraitPlaceholder } from "../ui/PortraitPlaceholder";
+import { SITE } from "../../data/content";
 
 export function Hero() {
 	const [firstName, ...restName] = SITE.name.split(" ");
@@ -10,53 +12,44 @@ export function Hero() {
 			className="relative flex min-h-screen scroll-mt-28 items-start justify-center overflow-hidden pt-24 sm:pt-28 lg:items-center"
 			id="home"
 		>
-			<div
-				className="pointer-events-none absolute inset-0 z-0 opacity-40 dark:opacity-20"
-				aria-hidden
-			>
-				<div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,var(--tw-gradient-stops))] from-primary-container/30 via-surface/0 to-surface/0 dark:from-primary-container/40" />
-			</div>
+			<DecorAsterisk
+				size="xl"
+				className="absolute -left-8 top-32 hidden lg:block"
+			/>
+			<DecorAsterisk
+				size="md"
+				className="absolute right-8 top-48 opacity-80 sm:right-16"
+			/>
+			<DecorAsterisk
+				size="sm"
+				className="absolute bottom-24 left-1/4 hidden sm:block"
+			/>
 
-			<div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 sm:gap-12 lg:grid-cols-2 lg:px-8">
-				<MotionSection className="order-2 space-y-6 sm:space-y-8 lg:order-1">
-					<div className="inline-flex items-center rounded-full bg-primary-container px-4 py-2 text-sm font-semibold uppercase tracking-wide text-on-primary-container dark:bg-surface-container-high dark:text-primary">
-						{SITE.tagline}
-					</div>
-					<h1 className="font-headline text-5xl font-extrabold leading-[0.9] tracking-tighter text-on-background sm:text-6xl md:text-7xl lg:text-8xl">
+			<div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+				<MotionSection className="order-1 w-full justify-self-center lg:order-1 lg:max-w-lg">
+					<PortraitPlaceholder variant="circle" label="Add your photo" />
+				</MotionSection>
+
+				<MotionSection className="order-2 space-y-6 sm:space-y-8 lg:order-2">
+					<p className="section-eyebrow">{SITE.tagline}</p>
+					<h1 className="font-headline text-5xl font-extrabold leading-[0.95] tracking-tight text-on-background sm:text-6xl md:text-7xl lg:text-8xl">
 						{firstName}{" "}
 						{lastName ? (
-							<span className="text-primary">{lastName}</span>
+							<span className="text-accent-italic text-primary">
+								{lastName}
+							</span>
 						) : null}
 					</h1>
-					<p className="max-w-lg font-body text-lg leading-relaxed text-on-surface-variant sm:text-xl md:text-2xl">
+					<p className="max-w-lg text-lg leading-relaxed text-on-surface-variant sm:text-xl">
 						{SITE.heroLead}
 					</p>
 					<div className="flex flex-wrap gap-4 pt-2">
-						<a
-							href="#projects"
-							className="rounded-xl bg-primary px-8 py-4 text-center text-sm font-bold uppercase tracking-wide text-on-primary shadow-xl shadow-primary/20 transition-transform duration-300 ease-smooth hover:scale-105 active:scale-95 dark:bg-linear-to-br dark:from-primary dark:to-primary-container dark:shadow-primary/10"
-						>
+						<a href="#projects" className="btn-primary">
 							View Projects
 						</a>
-						<a
-							href="#contact"
-							className="rounded-xl border border-outline px-8 py-4 text-center text-sm font-bold uppercase tracking-wide text-primary transition-colors duration-300 ease-smooth hover:bg-primary-container/20 dark:border-outline-variant/20 dark:text-on-surface dark:hover:bg-surface-container-high"
-						>
+						<a href="#contact" className="btn-outline">
 							Contact Me
 						</a>
-					</div>
-				</MotionSection>
-
-				<MotionSection className="relative order-1 w-full max-w-sm justify-self-center lg:order-2 lg:max-w-none">
-					<div className="aspect-square overflow-hidden rounded-3xl shadow-2xl shadow-primary/10 lg:transition-transform lg:duration-500 lg:ease-smooth lg:rotate-3 lg:hover:rotate-0 dark:shadow-emerald-950/50">
-						<img
-							src={IMAGES.heroWorkspace}
-							alt="Developer workspace"
-							className="h-full w-full object-cover"
-							width={800}
-							height={800}
-							decoding="async"
-						/>
 					</div>
 				</MotionSection>
 			</div>
