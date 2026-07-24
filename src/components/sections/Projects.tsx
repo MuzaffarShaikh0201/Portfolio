@@ -55,7 +55,11 @@ function ScrollButton({
 		<button
 			type="button"
 			onClick={onClick}
-			aria-label={direction === "left" ? "Scroll projects left" : "Scroll projects right"}
+			aria-label={
+				direction === "left"
+					? "Scroll projects left"
+					: "Scroll projects right"
+			}
 			className={cn(
 				"flex size-10 shrink-0 items-center justify-center rounded-full border border-outline-variant/50 bg-surface-container-high text-lg font-bold text-on-background transition-colors duration-300 ease-smooth hover:border-primary hover:text-primary",
 				className,
@@ -73,8 +77,9 @@ export function Projects() {
 		const el = scrollRef.current;
 		if (!el) return;
 		const card = el.querySelector<HTMLElement>("[data-project-card]");
-		const gap = 32;
-		const amount = card ? card.offsetWidth + gap : el.clientWidth * 0.85;
+		const styles = getComputedStyle(el);
+		const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+		const amount = card ? card.offsetWidth + gap : el.clientWidth;
 		el.scrollBy({
 			left: direction === "left" ? -amount : amount,
 			behavior: "smooth",
@@ -83,7 +88,7 @@ export function Projects() {
 
 	return (
 		<section
-			className="relative bg-surface-container pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32"
+			className="relative overflow-x-hidden bg-surface-container pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32"
 			id="projects"
 		>
 			<DecorAsterisk
@@ -96,30 +101,33 @@ export function Projects() {
 					<p className="section-eyebrow mb-4">Projects</p>
 					<h2 className="mb-4 font-headline text-4xl font-bold tracking-tight text-on-background sm:text-5xl">
 						Selected{" "}
-						<span className="text-accent-italic text-primary">Works</span>
+						<span className="text-accent-italic text-primary">
+							Works
+						</span>
 					</h2>
 					<p className="mx-auto max-w-2xl text-lg text-on-surface-variant">
 						A gallery of meticulously engineered solutions.
 					</p>
 				</MotionSection>
 
-				<div className="flex items-center gap-2 sm:gap-4">
+				<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-4">
 					<ScrollButton
 						direction="left"
 						onClick={() => scroll("left")}
+						className="hidden sm:flex"
 					/>
 
 					<div
 						ref={scrollRef}
-						className="flex min-w-0 flex-1 gap-8 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory"
+						className="flex min-w-0 w-full flex-1 gap-4 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory sm:gap-8"
 					>
 						{PROJECTS.map((p) => (
 							<article
 								key={p.title}
 								data-project-card
-								className="group w-[min(85vw,18rem)] shrink-0 snap-start sm:w-[20rem]"
+								className="group w-full min-w-full shrink-0 snap-start sm:w-80 sm:min-w-80"
 							>
-								<div className="relative mb-4 aspect-16/10 overflow-hidden rounded-xl border border-[color:var(--ds-card-border)]">
+								<div className="relative mb-4 aspect-16/10 overflow-hidden rounded-xl border border-(--ds-card-border)">
 									<img
 										src={p.image}
 										alt=""
@@ -165,7 +173,8 @@ export function Projects() {
 												cta={p.secondaryCta}
 												variant="secondary"
 											/>
-											{"tertiaryCta" in p && p.tertiaryCta ? (
+											{"tertiaryCta" in p &&
+											p.tertiaryCta ? (
 												<ProjectCtaLink
 													cta={p.tertiaryCta}
 													variant="secondary"
@@ -181,7 +190,19 @@ export function Projects() {
 					<ScrollButton
 						direction="right"
 						onClick={() => scroll("right")}
+						className="hidden sm:flex"
 					/>
+
+					<div className="flex justify-center gap-3 sm:hidden">
+						<ScrollButton
+							direction="left"
+							onClick={() => scroll("left")}
+						/>
+						<ScrollButton
+							direction="right"
+							onClick={() => scroll("right")}
+						/>
+					</div>
 				</div>
 			</div>
 		</section>
