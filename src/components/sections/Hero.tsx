@@ -25,7 +25,7 @@ export function Hero() {
 			/>
 
 			<div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
-				<MotionSection className="space-y-6 sm:space-y-8">
+				<MotionSection className="order-2 space-y-6 sm:space-y-8 lg:order-1">
 					<p className="section-eyebrow">{SITE.tagline}</p>
 					<h1 className="font-headline text-5xl font-extrabold leading-[0.95] tracking-tight text-on-background sm:text-6xl md:text-7xl lg:text-8xl">
 						{firstName}{" "}
@@ -48,12 +48,12 @@ export function Hero() {
 					</div>
 				</MotionSection>
 
-				<MotionSection className="w-full justify-self-center lg:justify-self-end lg:max-w-lg">
-					<div className="aspect-square overflow-hidden rounded-2xl border border-[color:var(--ds-card-border)] lg:transition-transform lg:duration-500 lg:ease-smooth lg:hover:scale-[1.02]">
+				<MotionSection className="order-1 w-full justify-self-center lg:order-2 lg:justify-self-end lg:max-w-lg">
+					<div className="aspect-4/3 overflow-hidden rounded-2xl border border-(--ds-card-border) lg:aspect-square lg:transition-transform lg:duration-500 lg:ease-smooth lg:hover:scale-[1.02]">
 						<img
 							src={IMAGES.heroWorkspace}
 							alt="Developer workspace"
-							className="h-full w-full object-cover"
+							className="h-full w-full object-cover object-bottom lg:object-center"
 							width={800}
 							height={800}
 							decoding="async"
